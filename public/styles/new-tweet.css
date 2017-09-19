@@ -1,0 +1,99 @@
+.new-tweet {
+    background-color: #eee;
+    border-radius: 5px;
+    border: 1px solid #a8a8a8;
+    width: 90%;
+    margin: auto;
+}
+
+.new-tweet h2 {
+    margin-top: 0.3em;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+    width: 94.5%;
+    text-align: left;
+    border-bottom: 2px solid black;
+}
+
+.counter {
+    margin-left: 17.5em;
+}
+
+textarea {
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+    width: 95%;
+}
+
+input {
+    margin-left: 0.5em;
+    margin-bottom: 1em;
+}
+
+.all-tweets {
+    overflow: hidden;
+    border-radius: 5px;
+    border: 1px solid #a8a8a8;
+    width: 90%;
+    margin: auto;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    opacity: 0.6;
+    transition: opacity 0.2s linear;
+}
+
+.user-avatar {
+    display: inline-block;
+    border-radius: 5px;
+}
+
+.all-tweets h1 {
+    position: absolute;
+    padding-left: 0.25em;
+    display: inline-block;
+    font-size: 1.60em;
+    margin: 0;
+}
+
+.tweet-header {
+    padding: 0.75em;
+    background-color: #eee;
+}
+
+.user-name {
+    float: right;
+}
+
+.tweet-content {
+    width: 100%;
+    padding: 0.5em;
+    text-align: justify
+}
+
+.tweet-footer {
+    border-top: 1px solid #c8cbd1;
+    padding: 0.5em;
+}
+
+.tweet-actions {
+    float: right;
+    opacity: 0;
+    transition: opacity 0.2s linear;
+}
+
+.tweet-actions i {
+    padding-left: 0.3em;
+    padding-right: 0.3em;
+}
+
+.tweet-timestamp {
+    display: inline-block;
+}
+
+.tweet:hover .tweet-actions {
+    opacity: 1;
+}
+
+.all-tweets:hover {
+    opacity: 1;
+}
