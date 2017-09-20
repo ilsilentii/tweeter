@@ -30,7 +30,7 @@ input {
     margin-bottom: 1em;
 }
 
-.all-tweets {
+.tweet {
     overflow: hidden;
     border-radius: 5px;
     border: 1px solid #a8a8a8;
@@ -47,7 +47,7 @@ input {
     border-radius: 5px;
 }
 
-.all-tweets h1 {
+.tweet h1 {
     position: absolute;
     padding-left: 0.25em;
     display: inline-block;
@@ -60,7 +60,7 @@ input {
     background-color: #eee;
 }
 
-.user-name {
+.user-handle {
     float: right;
 }
 
@@ -84,6 +84,7 @@ input {
 .tweet-actions i {
     padding-left: 0.3em;
     padding-right: 0.3em;
+    color: #00a087;
 }
 
 .tweet-timestamp {
@@ -94,6 +95,6 @@ input {
     opacity: 1;
 }
 
-.all-tweets:hover {
+.tweet:hover {
     opacity: 1;
 }
