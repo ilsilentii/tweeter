@@ -42,7 +42,7 @@
     border: solid #1b1f21 1px;
     text-decoration: none;
     margin-top: 0.65em;
-    margin-left: 50%;
+    float: right;
 }
 
 .btn:hover {
@@ -50,4 +50,8 @@
     text-decoration: none;
     cursor: pointer;
     cursor: hand;
+}
+
+i {
+    padding-right: 0.2em;
 }

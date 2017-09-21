@@ -37,18 +37,13 @@ $(document).ready(function() {
     /////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////
 
-    function ComposeTweet(WriteData) {
-        var $header2 = $("<h2>")
-
-        var
-
-    }
-
-
-
-
-
-
+    $("#compose").click(function() {
+        $("#compose_tweet").slideToggle();
+        $("#tweet-input").select();
+        $('html, body').animate({
+            scrollTop: '0px'
+        }, 300);
+    });
 
     //////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////
@@ -110,6 +105,8 @@ $(document).ready(function() {
                 var tweet_array = TweetObject[TweetObject.length - 1]
                 let $tweet = createTweetElement(tweet_array)
                 $('#tweets-container').prepend($tweet);
+                console.log("hurray")
+                $('#tweets-container .tweet:first-child').hide().delay(100).slideDown(600)
             }
         })
     }

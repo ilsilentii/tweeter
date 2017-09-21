@@ -4,6 +4,7 @@
     border: 1px solid #a8a8a8;
     width: 90%;
     margin: auto;
+    display: none;
 }
 
 .new-tweet h2 {
@@ -31,6 +32,7 @@ input {
 }
 
 .tweet {
+    position: relative;
     overflow: hidden;
     border-radius: 5px;
     border: 1px solid #a8a8a8;
@@ -56,6 +58,7 @@ input {
 }
 
 .tweet-header {
+    height: 78px;
     padding: 0.75em;
     background-color: #eee;
 }
@@ -71,6 +74,7 @@ input {
 }
 
 .tweet-footer {
+    height: 36px;
     border-top: 1px solid #c8cbd1;
     padding: 0.5em;
 }
