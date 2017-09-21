@@ -38,6 +38,7 @@ $(document).ready(function() {
     //////////////////////////////////////////////////////////////////////////////////
 
     $(".compose_btn").click(function() {
+        $('#counter').text("140");
         $("#compose_tweet").slideToggle();
         $("#tweet-input").select();
         $('html, body').animate({
@@ -91,6 +92,7 @@ $(document).ready(function() {
             data: str,
             encode: true,
             success: function() {
+                $("#compose_tweet").slideToggle();
                 document.getElementById('tweet-input').value = '';
                 loadTweets();
             }
