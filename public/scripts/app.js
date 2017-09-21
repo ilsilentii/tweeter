@@ -37,7 +37,7 @@ $(document).ready(function() {
     /////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////
 
-    $("#compose").click(function() {
+    $(".compose_btn").click(function() {
         $("#compose_tweet").slideToggle();
         $("#tweet-input").select();
         $('html, body').animate({

@@ -30,7 +30,7 @@
     background-color: #edfffe;
 }
 
-.btn {
+.compose_btn {
     -webkit-border-radius: 5;
     -moz-border-radius: 5;
     border-radius: 5px;
@@ -45,7 +45,7 @@
     float: right;
 }
 
-.btn:hover {
+.compose_btn:hover {
     background: #44b8ae;
     text-decoration: none;
     cursor: pointer;
