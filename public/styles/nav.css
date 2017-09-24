@@ -1,11 +1,12 @@
 #nav-bar {
     position: fixed;
+    margin-top: -10%;
     height: 80px;
     width: 100%;
     color: #e8fdff;
     padding-left: 2em;
     padding-right: 2em;
-    z-index: 999;
+    z-index: 1;
     background: -moz-linear-gradient(left, #1e5799 0%, #2989d8 52%, #2989d8 52%, #7db9e8 100%);
     background: -webkit-linear-gradient(left, #1e5799 0%, #2989d8 52%, #2989d8 52%, #7db9e8 100%);
     background: linear-gradient(to right, #1e5799 0%, #2989d8 52%, #2989d8 52%, #7db9e8 100%);

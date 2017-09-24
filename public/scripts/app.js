@@ -1,16 +1,21 @@
 $(document).ready(function() {
+    //Sets the count to 1 to alernate between background colors(even or odd)
+    var count = 1
 
     //This Function creates the Tweet
+    //Has a onClick function to toggle the heart to red
+    //Changes the background of the tweet between grey and light grey
 
     function createTweetElement(tweetData) {
 
+        count = count + 1
+
         var $icons = $("<div>").addClass("tweet-actions")
             .append($("<i>").addClass("fa fa-heart clicked"))
-            .append($("<span>").addClass("Like").text(like))
+            /*.append($("<span>").addClass("Like").text(like))*/
             .append($("<i>").addClass("fa fa-flag"))
             .append($("<i>").addClass("fa fa-retweet"));
 
-        var like = 0;
 
         var $article = $("<article>").addClass("tweet");
 
@@ -31,6 +36,17 @@ $(document).ready(function() {
         $combine.find(".clicked").click(function() {
             $(this).toggleClass("red");
         })
+
+        function changecolor(color) {
+
+            if (count % 2 == 0) {
+                color.css("background-color", "#f2f2f2");
+            } else {
+                color.css("background-color", "#d6d6d6");
+            }
+        }
+
+        changecolor($combine.find(".tweet-header"))
 
         return $combine;
     }
@@ -93,8 +109,6 @@ $(document).ready(function() {
                 $('#counter').text("140")
                 document.getElementById('tweet-input').value = '';
                 loadTweets();
-
-
             }
         })
     });
