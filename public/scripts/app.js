@@ -1,6 +1,6 @@
 $(document).ready(function() {
     //Sets the count to 1 to alernate between background colors(even or odd)
-    var count = 1
+    var count = 1;
 
     //This Function creates the Tweet
     //Has a onClick function to toggle the heart to red
@@ -8,11 +8,10 @@ $(document).ready(function() {
 
     function createTweetElement(tweetData) {
 
-        count = count + 1
+        count = count + 1;
 
         var $icons = $("<div>").addClass("tweet-actions")
             .append($("<i>").addClass("fa fa-heart clicked"))
-            /*.append($("<span>").addClass("Like").text(like))*/
             .append($("<i>").addClass("fa fa-flag"))
             .append($("<i>").addClass("fa fa-retweet"));
 
@@ -46,8 +45,7 @@ $(document).ready(function() {
             }
         }
 
-
-        changecolor($combine.find(".tweet-header"))
+        changecolor($combine.find(".tweet-header"));
 
         return $combine;
     }
