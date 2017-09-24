@@ -1,44 +1,43 @@
-/*
- * Client-side JS logic goes here
- * jQuery is already loaded
- * Reminder: Use (and do all your DOM work in) jQuery's document ready function
- */
-
-// Test / driver code (temporary). Eventually will get this from the server.
-
 $(document).ready(function() {
 
+    //This Function creates the Tweet
+
     function createTweetElement(tweetData) {
-        var $article = $("<article>").addClass("tweet")
+
+        var $icons = $("<div>").addClass("tweet-actions")
+            .append($("<i>").addClass("fa fa-heart clicked"))
+            .append($("<span>").addClass("Like").text(like))
+            .append($("<i>").addClass("fa fa-flag"))
+            .append($("<i>").addClass("fa fa-retweet"));
+
+        var like = 0;
+
+        var $article = $("<article>").addClass("tweet");
 
         var $header = $("<header>").addClass("tweet-header")
             .append($("<img>").addClass("user-avatar").attr("src", tweetData.user.avatars.small))
-            .append($("<h1>").addClass("user-name").text(tweetData.user.name))
-            .append($("<span>").addClass("user-handle").text(tweetData.user.handle))
+            .append($("<img>").addClass("arrow").attr("src", "../images/arrow.png"))
+            .append($("<main>").addClass("tweet-content")
+                .append($("<h1>").addClass("user-name").text(tweetData.user.name))
+                .append($("<span>").addClass("user-handle").text(tweetData.user.handle))
+                .append($("<p>").text(tweetData.content.text))
+                .append($("<footer>").addClass("tweet-footer")
+                    .append($("<div>").addClass("tweet-timestamp"))
+                    .append($("<span>").addClass('tweet-time').text(moment(tweetData.created_at).fromNow()))
+                    .append($icons)));
 
-        var $main = $("<main>").addClass("tweet-content")
-            .append($("<p>").text(tweetData.content.text))
+        var $combine = $article.append($header);
 
-        var $icons = $("<div>").addClass("tweet-actions")
-            .append($("<i>").addClass("fa fa-heart"))
-            .append($("<i>").addClass("fa fa-flag"))
-            .append($("<i>").addClass("fa fa-retweet"))
-
-        var $footer = $("<footer>").addClass("tweet-footer")
-            .append($("<div>").addClass("tweet-timestamp"))
-            .append($("<span>").text(tweetData.created_at))
-            .append($icons);
-
-        var $combine = $article.append($header).append($main).append($footer);
+        $combine.find(".clicked").click(function() {
+            $(this).toggleClass("red");
+        })
 
         return $combine;
     }
 
-    /////////////////////////////////////////////////////////////////////////////////
-    //////////////////////////////////////////////////////////////////////////////////
+    //This function opens and closes the Tweet Creation. It scolls to the top once clicked.
 
     $(".compose_btn").click(function() {
-        $('#counter').text("140");
         $("#compose_tweet").slideToggle();
         $("#tweet-input").select();
         $('html, body').animate({
@@ -46,70 +45,86 @@ $(document).ready(function() {
         }, 300);
     });
 
-    //////////////////////////////////////////////////////////////////////////////////////
-    //////////////////////////////////////////////////////////////////////////////////////
+    //This function grabs all the tweets in the database
 
     function loadPreviousTweets() {
         $.ajax({
             url: 'http://localhost:8080/tweets',
             method: 'GET',
             success: function(TweetObject) {
-                renderPreviousTweets(TweetObject)
+                renderPreviousTweets(TweetObject);
             }
         })
     }
 
     loadPreviousTweets();
 
+    //This function takes the tweets that have been grabbed from the database and renders them to the page through the CreateTweetElement function
+
     function renderPreviousTweets(tweet) {
         for (let x in tweet) {
             let $tweet = createTweetElement(tweet[tweet.length - x - 1]);
             $('#tweets-container').append($tweet);
         }
+
+
     }
 
-    //////////////////////////////////////////////////////////////////////////////////////////
-    //////////////////////////////////////////////////////////////////////////////////////////
+    //This is the form submission where someone enters their tweet in the textbox.
+    //This function takes that text and writes it to the database and uses the loadTweets function to render it to the page
+    //This function will stop users from going over 140 characters and will give an error when submitting a blank tweet
 
-    var $button = $('#tweetbtn')
-    $button.on('click', function() {
+
+    $('form').submit(function(event) {
         var x;
         x = document.getElementById("tweet-input").value;
         if (x == "") {
             alert("Please Enter a Tweet");
             return false;
         };
-    })
-
-
-    $('form').submit(function(event) {
-
         event.preventDefault();
-        var str = $('form').serialize()
+        var str = $('form').serialize();
         $.ajax({
             type: 'POST',
             url: 'http://localhost:8080/tweets',
             data: str,
             encode: true,
             success: function() {
-                $("#compose_tweet").slideToggle();
+                $('#counter').text("140")
                 document.getElementById('tweet-input').value = '';
                 loadTweets();
+
+
             }
         })
     });
+
+    // This function grabs tweets from the database and renders only the last tweet that was created
 
     function loadTweets() {
         $.ajax({
             url: 'http://localhost:8080/tweets',
             method: 'GET',
             success: function(TweetObject) {
-                var tweet_array = TweetObject[TweetObject.length - 1]
-                let $tweet = createTweetElement(tweet_array)
+                var tweet_array = TweetObject[TweetObject.length - 1];
+                let $tweet = createTweetElement(tweet_array);
                 $('#tweets-container').prepend($tweet);
-                console.log("hurray")
-                $('#tweets-container .tweet:first-child').hide().delay(100).slideDown(600)
+                $('#tweets-container .tweet:first-child').hide().delay(100).slideDown(600);
             }
         })
     }
+
+    //This function runs every 30 seconds and updates the time the tweet was sent
+
+    setInterval(function() {
+        $.ajax({
+            url: 'http://localhost:8080/tweets',
+            method: 'GET',
+            success: function(tweetData) {
+                for (let i = tweetData.length - 1; i >= 0; i--) {
+                    $('.tweet-time').eq(tweetData.length - 1 - i).text(moment(tweetData[i].created_at).fromNow())
+                }
+            }
+        })
+    }, 30000);
 });

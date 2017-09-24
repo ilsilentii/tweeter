@@ -9,8 +9,7 @@ module.exports = function makeDataHelpers(db) {
 
         // Saves a tweet to `db`
         saveTweet: function(newTweet, callback) {
-            db.collection("tweets").insertOne(newTweet)
-            //db.tweets.push(newTweet);
+            db.collection("tweets").insertOne(newTweet);
             callback(null, true);
 
         },
@@ -24,9 +23,6 @@ module.exports = function makeDataHelpers(db) {
                 const sortNewestFirst = (a, b) => a.created_at - b.created_at;
                 callback(null, tweets.sort(sortNewestFirst));
             });
-
-
         }
-
     };
 }

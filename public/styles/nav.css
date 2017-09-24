@@ -2,11 +2,14 @@
     position: fixed;
     height: 80px;
     width: 100%;
-    background-color: #00a087;
     color: #e8fdff;
     padding-left: 2em;
     padding-right: 2em;
     z-index: 999;
+    background: -moz-linear-gradient(left, #1e5799 0%, #2989d8 52%, #2989d8 52%, #7db9e8 100%);
+    background: -webkit-linear-gradient(left, #1e5799 0%, #2989d8 52%, #2989d8 52%, #7db9e8 100%);
+    background: linear-gradient(to right, #1e5799 0%, #2989d8 52%, #2989d8 52%, #7db9e8 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#7db9e8', GradientType=1);
 }
 
 #nav-bar .logo {
@@ -35,21 +38,28 @@
     -moz-border-radius: 5;
     border-radius: 5px;
     font-family: Arial;
-    color: #466e5c;
+    color: white;
     font-size: 15px;
-    background: #edfffe;
+    background: #2e71a0;
     padding: 20px 20px 20px 20px;
-    border: solid #1b1f21 1px;
+    border: none;
     text-decoration: none;
     margin-top: 0.65em;
     float: right;
 }
 
 .compose_btn:hover {
-    background: white;
+    background: #56b9ff;
     text-decoration: none;
     cursor: pointer;
     cursor: hand;
+}
+
+.compose_btn:focus {
+    outline: none;
+    -webkit-box-shadow: inset 5px 5px 7px -2px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: inset 5px 5px 7px -2px rgba(0, 0, 0, 0.75);
+    box-shadow: inset 5px 5px 7px -2px rgba(0, 0, 0, 0.75);
 }
 
 i {

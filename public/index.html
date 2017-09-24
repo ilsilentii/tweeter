@@ -17,18 +17,20 @@
     <script type="text/javascript" src="/scripts/app.js"></script>
     <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
     <script src="https://use.fontawesome.com/f8cc7b29cd.js"></script>
+    <script type="text/javascript" src="/scripts/moment.js"></script>
 </head>
 
 <body>
     <!-- Top nav bar (fixed) -->
     <nav id="nav-bar">
-        <img class="logo" src="/images/bird.png">
+        <img class="logo" src="/images/tweeterbird.png">
         <span class="header">Tweeter</span>
         <button type="submit" class="compose_btn"><span><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Compose</span>
         </button>
     </nav>
     <!-- Page-specific (main) content here -->
     <main class="container" id="foo">
+        <div class="color-header"></div>
         <section id="compose_tweet" class="new-tweet">
             <h2>Compose Tweet</h2>
             <form action="/tweets" maxlength="140" method="POST">
