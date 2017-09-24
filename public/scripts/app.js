@@ -46,6 +46,7 @@ $(document).ready(function() {
             }
         }
 
+
         changecolor($combine.find(".tweet-header"))
 
         return $combine;

@@ -19,7 +19,8 @@
 }
 
 .counter {
-    margin-left: 17.5em;
+    float: right;
+    margin-right: 5%;
 }
 
 textarea {
@@ -131,7 +132,7 @@ input {
 }
 
 .tweet:hover {
-    opacity: 1;
+    opacity: 0.9;
 }
 
 .tweet-actions {
